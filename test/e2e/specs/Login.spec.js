@@ -1,6 +1,6 @@
-import { loginPage } from '../pages/Login.page.js';
-import { loginValidation } from '../validations/Login.validation.js';
-import { context } from '../../data/Context.js';
+import { loginPage } from '../pages/Login.page';
+import { loginValidation } from '../validations/Login.validation';
+import { context } from '../../data/Context';
 
 describe('Authentication page.', () => {
   before(() => {

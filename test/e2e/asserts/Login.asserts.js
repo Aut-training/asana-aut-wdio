@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { loginPage } from '../pages/Login.page.js';
+import { loginPage } from '../pages/Login.page';
 
 class LoginAsserts {
   checkUserLoggedMessage() {
