@@ -1,5 +1,5 @@
 import { loginPage } from '../pages/Login.page';
-import { loginValidation } from '../validations/Login.validation';
+import { loginAssert } from '../asserts/Login.assert';
 import { context } from '../../data/Context';
 
 describe('Authentication page.', () => {
@@ -7,12 +7,12 @@ describe('Authentication page.', () => {
       loginPage.open();
   });
 
-  it('Displays login message successfully.', () => {
-    loginPage.login(context.logins.user);
-    loginValidation.checkUserLoggedMessage();
+  it('Should display a info message about wrong user or password', () => {
+    loginAssert.checkUserOrPasswordIncorrect();
   });
 
-  it('Displays user name on the page.', () => {
-    loginValidation.checkUserName(context.logins.user.name);
+  it('Should display user name on the page.', () => {
+    loginAssert.checkUserName(context.logins.user.name);
   });
+
 });

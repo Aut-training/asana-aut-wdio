@@ -23,6 +23,10 @@ class LoginPage {
     return $('//div[contains(@class,\'WelcomeMessage-header\')]');
   }
 
+  get wrongUserOrPassword() {
+    return $('#error_message > p:nth-child(1) > strong');
+  }
+
   login(user) {
     this.buttonLogin.click();
     this.inputEmail.waitForEnabled();
