@@ -8,7 +8,6 @@ describe('Authentication page.', () => {
   });
 
   it('Should display a info message about wrong user or password', () => {
-    
     loginAssert.checkUserOrPasswordIncorrect();
   });
 
