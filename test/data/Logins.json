@@ -2,6 +2,8 @@
   "user": {
     "name": "Junior",
     "login": "junior.rodriguez@jalasoft.org",
-    "password": "123456789_qwerty"  
+    "password": "123456789_qwerty",
+    "passwordWrong": "wrongpassword",
+    "projectName": "Project Test"
   }
 }

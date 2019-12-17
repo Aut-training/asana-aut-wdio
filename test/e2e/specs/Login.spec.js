@@ -1,18 +1,19 @@
-import { loginPage } from '../pages/Login.page';
-import { loginAssert } from '../asserts/Login.assert';
-import { context } from '../../data/Context';
+const loginPage = require('../pages/Login.page');
+const loginAssert = require('../asserts/Login.asserts');
+const context = require('../../data/Context');
 
-describe('Authentication page.', () => {
-  before(() => {
-      loginPage.open();
+describe('Asana Page for Login', () => {
+  beforeEach(() => {
+    loginPage.open();
   });
 
-  it('Should display a info message about wrong user or password', () => {
-    loginAssert.checkUserOrPasswordIncorrect();
+  it('should not log user to asana with an invalid password', () => {
+    loginPage.loginWrong(context.user);
+    loginAssert.checkMessageForWrongPassword();
   });
 
-  it('Should display user name on the page.', () => {
-    loginAssert.checkUserName(context.logins.user.name);
+  it('should log in user to asana', () => {
+    loginPage.loginCorrect(context.user);
+    loginAssert.checkMessageWelcome();
   });
-
 });

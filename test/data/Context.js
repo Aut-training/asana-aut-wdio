@@ -1,3 +1,3 @@
-import logins from './Logins.json';
-
-export const context = { logins };
+const login = require('./Logins.json');
+ 
+module.exports = login;

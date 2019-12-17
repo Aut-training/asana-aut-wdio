@@ -1,5 +1,12 @@
-class HomePage{    
+class HomePage {
+  
+  open(){
+    browser.url('https://asana.com/es');
+  }
 
+  get titleHomePage(){
+    return browser.getTitle();
+  }
 }
 
-export const homePage = new HomePage();
+module.exports = new HomePage();
