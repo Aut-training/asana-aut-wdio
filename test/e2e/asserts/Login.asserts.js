@@ -1,6 +1,6 @@
 const loginPage = require('../pages/Login.page');
 const systemMessages = require('../constants/SystemMessages.constant');
-const assert = require('assert');
+const assert = require('chai').assert;
 
 class LoginAssert {
   checkMessageForWrongPassword(){

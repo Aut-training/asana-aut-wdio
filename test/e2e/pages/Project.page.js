@@ -1,4 +1,4 @@
-class DashboardPage {
+class ProjectPage {
   open(){
     browser.url('https://asana.com/es#login');
   }
@@ -19,8 +19,12 @@ class DashboardPage {
     return $('//a[contains(@class,\'SidebarTeamDetailsProjectsList-emptyTeamCreateProjectLink\')]');
   }
 
-  get typeNewProject(){
+  get templateNewProject(){
     return $('div[title=\'Proyecto en blanco\']');
+  }
+
+  get typeNewProject(){
+    return $('//div[contains(@class,\'CheckableInputRowStructure-input\')]');
   }
 
   get inputProjectName(){
@@ -32,19 +36,28 @@ class DashboardPage {
   }
 
   get nameProjectCreated(){
-    return $('//h1[contains(@class,\'TopbarPageHeaderStructure-title\')]');
+    return $('//h1[contains(@class,\'Typography--truncate TopbarPageHeaderStructure-title\')]');
   }
 
-  createProject(user){
+  get cardFirst(){
+    return $('//div[contains(@class,\'BoardCard\') and contains(@draggable,\'true\')]');
+  }
+
+  get inProgressColumn(){
+    return $('//div[contains(@class,\'SortableList-itemContainer SortableList-itemContainer--column\')]');
+  }
+
+  createTaskInProject(user){
     this.inputEmail.setValue(user.login);
     this.inputPassword.setValue(user.password);
     this.buttonLogin.click();
     this.linkNewProject.click();
-    this.typeNewProject.click();
+    this.templateNewProject.click();
     this.inputProjectName.setValue(user.projectName);
-    this.buttonSaveProject.click();
-    this.nameProjectCreated.waitForExist();
+    this.typeNewProject.click();
+    //this.buttonSaveProject.click();
+    this.cardFirst.dragAndDrop(this.inProgressColumn);
   }
 
 }
-module.exports = new DashboardPage();
+module.exports = new ProjectPage();

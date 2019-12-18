@@ -4,6 +4,8 @@
     "login": "junior.rodriguez@jalasoft.org",
     "password": "123456789_qwerty",
     "passwordWrong": "wrongpassword",
-    "projectName": "Project Test"
+    "projectName": "Project Test",
+    "task": "Card only test",
+    "list": "List"
   }
 }
