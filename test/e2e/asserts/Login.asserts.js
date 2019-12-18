@@ -13,7 +13,7 @@ class LoginAssert {
   checkMessageWelcome(){
     assert.strictEqual(
       loginPage.messageWelcome.getText(),
-      systemMessages.FEEDBACK_MESSAGE_WELCOME
+      systemMessages.FEEDBACK_MESSAGE_AFTER_LOGIN
     );
   }
 }

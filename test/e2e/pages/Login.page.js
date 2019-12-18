@@ -20,7 +20,7 @@ class LoginPage {
   }
 
   get messageWelcome(){
-    return $('//div[contains(@class,\'WelcomeMessage-header\')]');
+    return $('//h1[contains(@class,\'Typography--truncate\')]');
   }
 
   loginWrong(user){

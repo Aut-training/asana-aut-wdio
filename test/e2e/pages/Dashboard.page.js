@@ -24,7 +24,7 @@ class DashboardPage {
   }
 
   get typeNewProject(){
-    return $('/html/body/div[2]/div[1]/div/div/div/div/div[1]/div/div[1]/div[1]/div');
+    return $('div[title=\'Proyecto en blanco\']');
   }
 
   get inputProjectName(){
