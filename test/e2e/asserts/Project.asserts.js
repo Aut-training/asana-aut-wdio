@@ -10,6 +10,12 @@ class ProjectAssert {
     );
   }
 
+  checkNameOfCardInTheProjectCreated(){
+    assert.strictEqual(
+      projectPage.firstCard.getText(),
+      systemMessages.NAME_TASK
+    );
+  }
 }
 
 module.exports = new ProjectAssert();

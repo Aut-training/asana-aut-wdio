@@ -24,7 +24,7 @@ class ProjectPage {
   }
 
   get typeNewProject(){
-    return $('//div[contains(@class,\'CheckableInputRowStructure-input\')]');
+    return $('(//div[contains(@class,\'ProjectLayoutSelector-layoutOptionLabel\')])[2]');
   }
 
   get inputProjectName(){
@@ -39,12 +39,12 @@ class ProjectPage {
     return $('//h1[contains(@class,\'Typography--truncate TopbarPageHeaderStructure-title\')]');
   }
 
-  get cardFirst(){
-    return $('//div[contains(@class,\'BoardCard\') and contains(@draggable,\'true\')]');
+  get firstCard(){
+    return $('(//div[contains(@class,\'BoardCard\')])[1]');
   }
 
-  get inProgressColumn(){
-    return $('//div[contains(@class,\'SortableList-itemContainer SortableList-itemContainer--column\')]');
+  get columnInProgress(){
+    return $('(//div[contains(@class,\'SortableList-itemContainer\')])[3]');
   }
 
   createTaskInProject(user){
@@ -55,8 +55,11 @@ class ProjectPage {
     this.templateNewProject.click();
     this.inputProjectName.setValue(user.projectName);
     this.typeNewProject.click();
-    //this.buttonSaveProject.click();
-    this.cardFirst.dragAndDrop(this.inProgressColumn);
+    this.buttonSaveProject.click();
+  }
+
+  moveTaskFromToDoToInProgress(){
+    this.firstCard.dragAndDrop(this.columnInProgress);
   }
 
 }
