@@ -15,10 +15,6 @@ class DashboardPage {
     return $('#login-submit-modal-login');
   }
 
-  get messageWelcome(){
-    return $('//div[contains(@class,\'WelcomeMessage-header\')]');
-  }
-
   get linkNewProject(){
     return $('//a[contains(@class,\'SidebarTeamDetailsProjectsList-emptyTeamCreateProjectLink\')]');
   }
@@ -39,16 +35,42 @@ class DashboardPage {
     return $('//h1[contains(@class,\'TopbarPageHeaderStructure-title\')]');
   }
 
+  get buttonMenuProject(){
+    return $('//a[contains(@class,\'PageHeaderDropdownMenuButton\')]');
+  }
+
+  get buttonMenuDeleteProject(){
+    return $('(//span[contains(text(),\'Eliminar proyecto\')])');
+  }
+
+  get buttonDeleteProjectConfirmation(){
+    return $('.DeletePotDialog-confirmText');
+  }
+
+  get messageOfConfirmationTheProjectWasDeleted(){
+    return $('//div[contains(@class,\'ToastNotificationContent-text\')]');
+  }
+
   createProject(user){
     this.inputEmail.setValue(user.login);
     this.inputPassword.setValue(user.password);
     this.buttonLogin.click();
-    this.messageWelcome.waitForExist();
     this.linkNewProject.click();
     this.typeNewProject.click();
     this.inputProjectName.setValue(user.projectName);
     this.buttonSaveProject.click();
     this.nameProjectCreated.waitForExist();
+  }
+
+  delete(){
+    this.buttonMenuProject.click();
+    this.buttonMenuDeleteProject.waitForExist(3000);
+    this.buttonMenuDeleteProject.click();
+    this.buttonDeleteProjectConfirmation.waitForExist(3000);
+    browser.pause(3000);
+    this.buttonDeleteProjectConfirmation.click();
+    browser.pause(3000);
+    this.messageOfConfirmationTheProjectWasDeleted.waitForExist(3000);
   }
 
 }

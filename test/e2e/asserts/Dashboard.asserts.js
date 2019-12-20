@@ -1,6 +1,6 @@
 const dashboardPage = require('../pages/Dashboard.page');
 const systemMessages = require('../constants/SystemMessages.constant');
-const assert = require('assert');
+const assert = require('chai').assert;
 
 class DashboardAssert {
   checkNameOfProjectCreated(){

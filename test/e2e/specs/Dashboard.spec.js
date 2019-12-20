@@ -10,6 +10,7 @@ describe('Creation of a new project', () => {
   it('should be create a new project with the name Project Test', () => {
     dashboardPage.createProject(context.user);
     dashboardAssert.checkNameOfProjectCreated();
+    dashboardPage.delete();
   });
 
 });

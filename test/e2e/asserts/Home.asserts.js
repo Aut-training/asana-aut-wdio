@@ -1,6 +1,6 @@
 const homePage = require('../pages/Home.page');
 const systemMessages = require('../constants/SystemMessages.constant');
-const assert = require('assert');
+const assert = require('chai').assert;
 
 class HomeAssert {
   checkTitleOfWebBrowser(){
