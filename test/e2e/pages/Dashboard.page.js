@@ -40,7 +40,7 @@ class DashboardPage {
   }
 
   get buttonMenuDeleteProject(){
-    return $('(//span[contains(@class,\'MenuItem-label\')])[10]');
+    return $('(//span[contains(text(),\'Eliminar proyecto\')])');
   }
 
   get buttonDeleteProjectConfirmation(){

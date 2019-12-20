@@ -24,7 +24,7 @@ class ProjectPage {
   }
 
   get typeNewProject(){
-    return $('(//div[contains(@class,\'ProjectLayoutSelector-layoutOptionLabel\')])[2]');
+    return $('(//span[contains(text(),\'Tablero\')])');
   }
 
   get inputProjectName(){
@@ -40,7 +40,7 @@ class ProjectPage {
   }
 
   get firstCard(){
-    return $('(//div[contains(@class,\'BoardCard\')])[1]');
+    return $('(//div[contains(text(),\'Tarea 1\')])');
   }
 
   get linkNewColumn(){
@@ -52,11 +52,11 @@ class ProjectPage {
   }
 
   get titleNewColumnForAssertion(){
-    return $('(//span[contains(@class,\'BoardColumnHeaderTitle\')])[4]');
+    return $('(//span[contains(text(),\'For Testing\')])');
   }
 
   get titleNewCardForAssertion(){
-    return $('(//div[contains(@class,\'BoardCard-name\')])[4]');
+    return $('(//div[contains(text(),\'New Task\')])');
   }
 
   get textAreaNewCardTitle(){
@@ -72,7 +72,7 @@ class ProjectPage {
   }
 
   get buttonMenuDeleteProject(){
-    return $('(//span[contains(@class,\'MenuItem-label\')])[10]');
+    return $('(//span[contains(text(),\'Eliminar proyecto\')])');
   }
 
   get buttonDeleteProjectConfirmation(){
@@ -123,7 +123,7 @@ class ProjectPage {
     browser.pause(3000);
     this.textAreaNewCardTitle.setValue(user.task);
     browser.pause(3000);
-    this.buttonMenuProject.click();
+    browser.keys('\uE007');
   }
 
 }
