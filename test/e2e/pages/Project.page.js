@@ -43,8 +43,55 @@ class ProjectPage {
     return $('(//div[contains(@class,\'BoardCard\')])[1]');
   }
 
-  get columnInProgress(){
-    return $('(//div[contains(@class,\'SortableList-itemContainer\')])[3]');
+  get linkNewColumn(){
+    return $('//a[contains(@class,\'BoardNewColumn-addColumnLink\')]');
+  }
+
+  get addNewTask(){
+    return $('(//a[contains(@class,\'CardButton\')])[4]');
+  }
+
+  get titleNewColumnForAssertion(){
+    return $('(//span[contains(@class,\'BoardColumnHeaderTitle\')])[4]');
+  }
+
+  get titleNewCardForAssertion(){
+    return $('(//div[contains(@class,\'BoardCard-name\')])[4]');
+  }
+
+  get textAreaNewCardTitle(){
+    return $('//textarea[contains(@class,\'simpleTextarea\')]');
+  }
+
+  get textForNewColumn(){
+    return $('//input[contains(@class,\'BoardNewColumnForm-input\')]');
+  }
+
+  get buttonMenuProject(){
+    return $('//a[contains(@class,\'PageHeaderDropdownMenuButton\')]');
+  }
+
+  get buttonMenuDeleteProject(){
+    return $('(//span[contains(@class,\'MenuItem-label\')])[10]');
+  }
+
+  get buttonDeleteProjectConfirmation(){
+    return $('.DeletePotDialog-confirmText');
+  }
+
+  get messageOfConfirmationTheProjectWasDeleted(){
+    return $('//div[contains(@class,\'ToastNotificationContent-text\')]');
+  }
+
+  delete(){
+    this.buttonMenuProject.click();
+    this.buttonMenuDeleteProject.waitForExist(3000);
+    this.buttonMenuDeleteProject.click();
+    this.buttonDeleteProjectConfirmation.waitForExist(3000);
+    browser.pause(3000);
+    this.buttonDeleteProjectConfirmation.click();
+    browser.pause(3000);
+    this.messageOfConfirmationTheProjectWasDeleted.waitForExist(3000);
   }
 
   createTaskInProject(user){
@@ -58,8 +105,25 @@ class ProjectPage {
     this.buttonSaveProject.click();
   }
 
-  moveTaskFromToDoToInProgress(){
-    this.firstCard.dragAndDrop(this.columnInProgress);
+  createColumnAndTaskInProject(user){
+    this.inputEmail.setValue(user.login);
+    this.inputPassword.setValue(user.password);
+    this.buttonLogin.click();
+    this.linkNewProject.click();
+    this.templateNewProject.click();
+    this.inputProjectName.setValue(user.projectName);
+    this.typeNewProject.click();
+    this.buttonSaveProject.click();
+    this.linkNewColumn.click();
+    browser.pause(3000);
+    this.textForNewColumn.setValue(user.list);
+    browser.pause(3000);
+    this.buttonMenuProject.click();
+    this.addNewTask.click();
+    browser.pause(3000);
+    this.textAreaNewCardTitle.setValue(user.task);
+    browser.pause(3000);
+    this.buttonMenuProject.click();
   }
 
 }

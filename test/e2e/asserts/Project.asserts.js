@@ -13,7 +13,21 @@ class ProjectAssert {
   checkNameOfCardInTheProjectCreated(){
     assert.strictEqual(
       projectPage.firstCard.getText(),
-      systemMessages.NAME_TASK
+      systemMessages.NAME_TASK_DEFAULT
+    );
+  }
+
+  checkNameOfNewCardCreated(){
+    assert.strictEqual(
+      projectPage.titleNewCardForAssertion.getText(),
+      systemMessages.NAME_NEW_TASK
+    );
+  }
+
+  checkNameOfNewColumn(){
+    assert.strictEqual(
+      projectPage.titleNewColumnForAssertion.getText(),
+      systemMessages.NAME_NEW_COLUMN
     );
   }
 }

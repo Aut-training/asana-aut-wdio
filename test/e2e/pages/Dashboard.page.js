@@ -35,6 +35,22 @@ class DashboardPage {
     return $('//h1[contains(@class,\'TopbarPageHeaderStructure-title\')]');
   }
 
+  get buttonMenuProject(){
+    return $('//a[contains(@class,\'PageHeaderDropdownMenuButton\')]');
+  }
+
+  get buttonMenuDeleteProject(){
+    return $('(//span[contains(@class,\'MenuItem-label\')])[10]');
+  }
+
+  get buttonDeleteProjectConfirmation(){
+    return $('.DeletePotDialog-confirmText');
+  }
+
+  get messageOfConfirmationTheProjectWasDeleted(){
+    return $('//div[contains(@class,\'ToastNotificationContent-text\')]');
+  }
+
   createProject(user){
     this.inputEmail.setValue(user.login);
     this.inputPassword.setValue(user.password);
@@ -44,6 +60,17 @@ class DashboardPage {
     this.inputProjectName.setValue(user.projectName);
     this.buttonSaveProject.click();
     this.nameProjectCreated.waitForExist();
+  }
+
+  delete(){
+    this.buttonMenuProject.click();
+    this.buttonMenuDeleteProject.waitForExist(3000);
+    this.buttonMenuDeleteProject.click();
+    this.buttonDeleteProjectConfirmation.waitForExist(3000);
+    browser.pause(3000);
+    this.buttonDeleteProjectConfirmation.click();
+    browser.pause(3000);
+    this.messageOfConfirmationTheProjectWasDeleted.waitForExist(3000);
   }
 
 }
